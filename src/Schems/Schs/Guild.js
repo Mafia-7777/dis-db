@@ -9,4 +9,4 @@ const guild = new mongo.Schema({
     }
 })
 
-module.exports = mongo.model("Guilds", guild)
+module.exports = mongo.model("Guilds", guild);
