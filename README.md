@@ -1,7 +1,7 @@
 # dis-db
 A mongoDB database manager designed for discord bots 
 ![Npm image](https://nodei.co/npm/dis-db.png)
-
+######
 ## Quick start
 ```js
 const disdb = require("dis-db");
