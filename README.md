@@ -19,11 +19,17 @@ let Quickstart = async () => {
     let newPrefix = await dataManger.changePrefix("123", "!!");
     console.log(newPrefix); // !!
 
+    let mogLogID = await dataManger.getModLog("123");
+    console.log(mogLogID) // null
+    
+    let newModLOg = await dataManger.changeModLog("123", "123456789");
+    console.log(newModLOg) // 123456789
+
     let guildData = await dataManger.getGuildData("123")
     console.log(guildData) // { config: { prefix: '!!' }, id: '123' }
 
     let deleteData = await dataManger.deleteGuildData("123");
-    console.log(deleteData); // If there was no data to be delete it will return null, If data was deleted it will return the data
+    console.log(deleteData); // { config: { prefix: '!!' }, id: '123' }
 
 }
 
@@ -61,6 +67,9 @@ ___
 /* Data manger */
 .getPrefix(guildID: String) // Retunrs the guilds prefix
 .changePrefix(guildID: String, newPrefix: String) // Changes a guilds prefix and returns new prefix
+
+.getModLog(guildID: String) // Retunrs the modlog
+.changeModLog(guildID: String, newModLog: String) // Changed the modLog and retunrs the new modLog data
 
 .getGuildData(guildID: String) // Retunrs a guilds data
 .deleteGuildData(guildID: String) // If data was deleted it returns the data
