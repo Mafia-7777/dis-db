@@ -198,7 +198,6 @@ module.exports = class disdb extends EventEmitter{
      * 
      * @param {String} guildID 
      */
-
     async getPing(guildID){
         let startTime = Date.now();
         await schems.guild.findOne({id: guildID || null});
