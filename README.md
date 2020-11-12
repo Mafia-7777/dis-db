@@ -69,7 +69,7 @@ ___
 .changePrefix(guildID: String, newPrefix: String) // Changes a guilds prefix and returns new prefix
 
 .getModLog(guildID: String) // Retunrs the modlog
-.changeModLog(guildID: String, newModLog: String) // Changed the modLog and retunrs the new modLog data
+.changeModLog(guildID: String, newModLog: String) // Changes the modLog and retunrs the new modLog data
 
 .getGuildData(guildID: String) // Retunrs a guilds data
 .deleteGuildData(guildID: String) // If data was deleted it returns the data
