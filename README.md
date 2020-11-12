@@ -82,5 +82,6 @@ ___
 
 /* Others */
 .getFetchPing() // Returns the ping in ms
+.getCreateAndDeletePing() // Ping object
 ```
 Support server => [Click me](https://discord.gg/MQuDfv5)
