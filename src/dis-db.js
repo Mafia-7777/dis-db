@@ -194,13 +194,27 @@ module.exports = class disdb extends EventEmitter{
         return this.emit("uninitialized", mongo.connection);
     }
 
-    /**
-     * 
-     * @param {String} guildID 
-     */
-    async getPing(guildID){
+    
+    async getFetchPing(){
         let startTime = Date.now();
-        await schems.guild.findOne({id: guildID || null});
+        await schems.guild.findOne({id: null});
         return Date.now() - startTime;
     }
+    async getCreateAndDeletePing(){
+        let createStartTime = Date.now();
+        await new schems.guild({id: "getCreatePing", config: { prefix: "getCreatePing" }}).save();
+        let createEndTime = Date.now();
+
+        let deleteStartTime = Date.now();
+        await schems.guild.findOneAndDelete({id: "getCreatePing", config: { prefix: "getCreatePing" }});
+        let deleteEndTime = Date.now();
+
+        let returnObj = {
+            create: createEndTime - createStartTime,
+            delete: deleteEndTime - deleteStartTime
+        }
+
+        return returnObj;
+    }
+    
 }

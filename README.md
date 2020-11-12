@@ -22,8 +22,8 @@ let Quickstart = async () => {
     let mogLogID = await dataManger.getModLog("123");
     console.log(mogLogID); // null
     
-    let newModLOg = await dataManger.changeModLog("123", "123456789");
-    console.log(newModLOg); // 123456789
+    let newModLog = await dataManger.changeModLog("123", "123456789");
+    console.log(newModLog); // 123456789
 
     let guildData = await dataManger.getGuildData("123");
     console.log(guildData); // { config: { prefix: '!!' }, id: '123' }
@@ -31,8 +31,11 @@ let Quickstart = async () => {
     let deleteData = await dataManger.deleteGuildData("123");
     console.log(deleteData); // { config: { prefix: '!!' }, id: '123' }
 
-    let ping = await dataManger.getPing();
-    console.log(ping) // Ping in ms
+    let fetchPing = await dataManger.getFetchPing();
+    console.log(fetchPing) // Fetch ping in ms 
+
+    let createAndDeletePing = await dataManger.getCreateAndDeletePing();
+    console.log(createAndDeletePing) // { create: pingInMs, delete: pingInMs }
 
 }
 
@@ -78,6 +81,6 @@ ___
 .deleteGuildData(guildID: String) // If data was deleted it returns the data
 
 /* Others */
-.getPing() // Returns the ping in ms
+.getFetchPing() // Returns the ping in ms
 ```
 Support server => [Click me](https://discord.gg/MQuDfv5)
