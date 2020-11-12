@@ -29,10 +29,10 @@ module.exports = class disdb extends EventEmitter{
         })
 
         /* Emits */
-        let types = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"]
+        let types = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
         types.forEach(type => {
             mongo.connection.on(type, () => this.emit(type, mongo.connection));
-        })
+        });
     }
 
 
@@ -96,7 +96,7 @@ module.exports = class disdb extends EventEmitter{
         }
         data.config.prefix = prefix;
         await data.save();
-        return data.config.prefix
+        return data.config.prefix;
     }
 
     /*      modLog stuff       */

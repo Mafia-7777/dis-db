@@ -20,13 +20,13 @@ let Quickstart = async () => {
     console.log(newPrefix); // !!
 
     let mogLogID = await dataManger.getModLog("123");
-    console.log(mogLogID) // null
+    console.log(mogLogID); // null
     
     let newModLOg = await dataManger.changeModLog("123", "123456789");
-    console.log(newModLOg) // 123456789
+    console.log(newModLOg); // 123456789
 
-    let guildData = await dataManger.getGuildData("123")
-    console.log(guildData) // { config: { prefix: '!!' }, id: '123' }
+    let guildData = await dataManger.getGuildData("123");
+    console.log(guildData); // { config: { prefix: '!!' }, id: '123' }
 
     let deleteData = await dataManger.deleteGuildData("123");
     console.log(deleteData); // { config: { prefix: '!!' }, id: '123' }
@@ -50,7 +50,7 @@ uninitialized
 let emits = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
 emits.forEach(emit => {
     dataManger.on(emit, connection => {
-        console.log(`dataManger is now ${emit}`)
+        console.log(`dataManger is now ${emit}`);
     })
 })
 ```
