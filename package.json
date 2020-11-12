@@ -1,5 +1,5 @@
 {
-  "name": "discorddb",
+  "name": "dis-db",
   "version": "1.0.0",
   "description": "A mongoDB database manager designed for discord bots ",
   "main": "index.js",

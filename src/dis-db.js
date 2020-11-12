@@ -1,8 +1,7 @@
-const { throws } = require("assert");
 const { EventEmitter } = require("events");
 const mongo = require("mongoose");
 const schems = require("./Schems/export");
-module.exports = class discorddb extends EventEmitter{
+module.exports = class disdb extends EventEmitter{
     /**
      * 
      * @param {Object} options

@@ -1,10 +1,10 @@
-# discorddb
+# dis-db
 A mongoDB database manager designed for discord bots 
 
 ## Quick start
 ```js
-const discorddb = require("discorddb");
-let dataManger = new discorddb({
+const disdb = require("dis-db");
+let dataManger = new disdb({
     connectUrl: "mongodb_connection_url",
     defaultPrefix: "!"
 })
