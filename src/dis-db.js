@@ -12,7 +12,6 @@ module.exports = class disdb extends EventEmitter{
     constructor(options){
         super();
 
-
         if(typeof options != "object") throw new Error("Your options must be a object");
         if(!options.connectUrl) throw new Error("You must provide a connect url");
         if(typeof options.connectUrl != "string") throw new Error("Your options.connectUrl must be a string");
