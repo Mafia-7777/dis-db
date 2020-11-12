@@ -31,6 +31,9 @@ let Quickstart = async () => {
     let deleteData = await dataManger.deleteGuildData("123");
     console.log(deleteData); // { config: { prefix: '!!' }, id: '123' }
 
+    let ping = await dataManger.getPing();
+    console.log(ping) // Ping in ms
+
 }
 
 Quickstart();
@@ -73,5 +76,8 @@ ___
 
 .getGuildData(guildID: String) // Retunrs a guilds data
 .deleteGuildData(guildID: String) // If data was deleted it returns the data
+
+/* Others */
+.getPing() // Returns the ping in ms
 ```
 Support server => [Click me](https://discord.gg/MQuDfv5)

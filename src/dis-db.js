@@ -142,7 +142,6 @@ module.exports = class disdb extends EventEmitter{
 
     /*       guild stuff        */
 
-
     /**
      * 
      * @param {String} guildID 
@@ -177,7 +176,7 @@ module.exports = class disdb extends EventEmitter{
 
 
 
-
+    /*        Fake amits       */
 
     fakeConnectedEmit(){
         return this.emit("connected", mongo.connection);
@@ -195,4 +194,14 @@ module.exports = class disdb extends EventEmitter{
         return this.emit("uninitialized", mongo.connection);
     }
 
+    /**
+     * 
+     * @param {String} guildID 
+     */
+
+    async getPing(guildID){
+        let startTime = Date.now();
+        await schems.guild.findOne({id: guildID || null});
+        return Date.now() - startTime;
+    }
 }
