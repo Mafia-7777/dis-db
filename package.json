@@ -1,0 +1,33 @@
+{
+  "name": "discorddb",
+  "version": "1.0.0",
+  "description": "A mongoDB database manager designed for discord bots ",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mafia-boss-lvl-420/discorddb.git"
+  },
+  "keywords": [
+    "discord",
+    "database",
+    "db",
+    "eris",
+    "discord.js",
+    "discordjs",
+    "mongoose",
+    "mongo",
+    "mongodb"
+  ],
+  "author": "Mafia-boss-lvl-420",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mafia-boss-lvl-420/discorddb/issues"
+  },
+  "homepage": "https://github.com/Mafia-boss-lvl-420/discorddb#readme",
+  "dependencies": {
+    "events": "^3.2.0",
+    "mongoose": "^5.10.13"
+  }
+}
