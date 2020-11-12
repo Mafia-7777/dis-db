@@ -1,1 +1,1 @@
-module.exports = require("./src/discorddb");
+module.exports = require("./src/dis-db");
