@@ -28,7 +28,7 @@ module.exports = class disdb extends EventEmitter{
         })
 
         this.events = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
-        
+
         this.events.forEach(type => {
             mongo.connection.on(type, () => this.emit(type, mongo.connection));
         });
@@ -205,7 +205,7 @@ module.exports = class disdb extends EventEmitter{
         let createEndTime = Date.now();
 
         let deleteStartTime = Date.now();
-        await schems.guild.findOneAndDelete({id: "getCreatePing", config: { prefix: "getCreatePing" }});
+        await schems.guild.findOneAndDelete({id: "getCreatePing"});
         let deleteEndTime = Date.now();
 
         let returnObj = {
