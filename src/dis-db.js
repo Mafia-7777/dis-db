@@ -27,9 +27,9 @@ module.exports = class disdb extends EventEmitter{
             defaultPrefix: options.defaultPrefix
         })
 
-        /* Emits */
-        let types = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
-        types.forEach(type => {
+        this.events = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
+        
+        this.events.forEach(type => {
             mongo.connection.on(type, () => this.emit(type, mongo.connection));
         });
     }

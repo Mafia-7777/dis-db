@@ -53,8 +53,7 @@ uninitialized
 
 ##### Example
 ```js
-let emits = ["connecting", "connected", "disconnecting", "disconnected", "uninitialized"];
-emits.forEach(emit => {
+dataManger.events.forEach(emit => {
     dataManger.on(emit, connection => {
         console.log(`dataManger is now ${emit}`);
     })
