@@ -31,4 +31,14 @@ module.exports = class{
             }
         }).save();
     }
+
+    checkReadyState(){
+        let readyState = mongo.connection._readyState;
+        if(readyState == 1) return null;
+        else if(readyState == 0) return "disconnected";
+        else if(readyState == 2) return "connecting";
+        else if(readyState == 3) return "disconnecting";
+        else if(readyState == 99) return "uninitialized";
+        else return "Not connected";
+    }
 }

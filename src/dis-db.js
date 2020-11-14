@@ -36,6 +36,8 @@ module.exports = class disdb extends EventEmitter{
 
 
     async asyncConnect(){
+        let connection = this.dbHelper.checkReadyState();
+        if(!connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
 
         await mongo.connect(this.data.connectUrl, {
             useNewUrlParser: true,
@@ -48,6 +50,9 @@ module.exports = class disdb extends EventEmitter{
     }
 
     Connect(){
+        let connection = this.dbHelper.checkReadyState();
+        if(!connection) throw new Error("mongoDB is already connected");
+
         mongo.connect(this.data.connectUrl, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -66,6 +71,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} guildID 
      */
     async getPrefix(guildID){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`)
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         if(!this.data.defaultPrefix) throw new Error("You must provide a default prefix");
@@ -83,6 +92,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} prefix 
      */
     async changePrefix(guildID, prefix){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`)
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         if(!prefix) throw new Error("You must provide a prefix");
@@ -105,6 +118,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} guildID 
      */
     async getModLog(guildID){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is not connected, It is: ${connection}`);
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         if(!this.data.defaultPrefix) throw new Error("You must provide a default prefix");
@@ -123,6 +140,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} modLog 
      */
     async changeModLog(guildID, modLog){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         if(!modLog) throw new Error("You must provide a guildID");
@@ -146,6 +167,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} guildID 
      */
     async getGuildData(guildID){
+        
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         let data = await schems.guild.findOne({id: guildID});
@@ -166,6 +191,10 @@ module.exports = class disdb extends EventEmitter{
      * @param {String} guildID 
      */
     async deleteGuildData(guildID){
+        
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
+
         if(!guildID) throw new Error("You must provide a guildID");
         if(typeof guildID != 'string') throw new Error("guildID must be a string");
         let remove = await schems.guild.findOneAndDelete({id: guildID});
@@ -193,13 +222,22 @@ module.exports = class disdb extends EventEmitter{
         return this.emit("uninitialized", mongo.connection);
     }
 
+    /*      Ping Pong        */
     
     async getFetchPing(){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
+
         let startTime = Date.now();
         await schems.guild.findOne({id: null});
         return Date.now() - startTime;
     }
     async getCreateAndDeletePing(){
+
+        let connection = this.dbHelper.checkReadyState();
+        if(connection) throw new Error(`mongoDB is already connected, It is: ${connection}`);
+
         let createStartTime = Date.now();
         await new schems.guild({id: "getCreatePing", config: { prefix: "getCreatePing" }}).save();
         let createEndTime = Date.now();
